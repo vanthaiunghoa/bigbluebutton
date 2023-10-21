@@ -8,10 +8,11 @@ import (
 	log "github.com/sirupsen/logrus"
 	"strings"
 	"time"
+	"os"
 )
 
 var redisClient = redis.NewClient(&redis.Options{
-	Addr:     "127.0.0.1:6379",
+	Addr:     os.Getenv("REDIS_HOST") + ":6379",
 	Password: "",
 	DB:       0,
 })
