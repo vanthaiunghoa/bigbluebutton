@@ -18,7 +18,7 @@ import (
 )
 
 var lastHasuraConnectionId int
-var hasuraEndpoint = "ws://127.0.0.1:8080/v1/graphql"
+var hasuraEndpoint = "ws://${HASURA_GRAPHQL_SERVER}:8080/v1/graphql"
 
 // Hasura client connection
 func HasuraClient(browserConnection *common.BrowserConnection, cookies []*http.Cookie, fromBrowserChannel chan interface{}, toBrowserChannel chan interface{}) error {
