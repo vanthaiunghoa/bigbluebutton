@@ -11,14 +11,14 @@ import (
 	"net/http/cookiejar"
 	"net/url"
 	"sync"
-
+	"os"
 	"github.com/iMDT/bbb-graphql-middleware/internal/common"
 	"golang.org/x/xerrors"
 	"nhooyr.io/websocket"
 )
 
 var lastHasuraConnectionId int
-var hasuraEndpoint = "ws://${HASURA_GRAPHQL_SERVER}:8080/v1/graphql"
+var hasuraEndpoint = "ws://" + os.Getenv("HASURA_GRAPHQL_SERVER")+ ":8080/v1/graphql"
 
 // Hasura client connection
 func HasuraClient(browserConnection *common.BrowserConnection, cookies []*http.Cookie, fromBrowserChannel chan interface{}, toBrowserChannel chan interface{}) error {
