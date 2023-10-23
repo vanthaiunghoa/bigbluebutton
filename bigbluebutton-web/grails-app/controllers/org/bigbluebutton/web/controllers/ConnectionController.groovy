@@ -82,7 +82,7 @@ class ConnectionController {
             builder {
               "response" "authorized"
               "X-Hasura-Role" "bbb_client"
-              "X-Hasura-Locked" u.locked ? "true" : "false"
+              "X-Hasura-Locked" u? (u.locked ? "true" : "false"): "false"
               "X-Hasura-LockedInMeeting" u? (u.locked ? userSession.meetingID : ""): ""
               "X-Hasura-LockedUserId" u? (u.locked ? userSession.internalUserId : ""): ""
               "X-Hasura-ModeratorInMeeting" u? (u.isModerator() ? userSession.meetingID : ""): ""
